@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--Images-->
+    <BitmapImage  x:Key="Github" UriSource="/ArsenalManager.UI;component/Resources/Images/github-logo.png"/>
+    <BitmapImage  x:Key="Telegram" UriSource="/ArsenalManager.UI;component/Resources/Images/telegram-logo.png"/>
+    <BitmapImage  x:Key="Linkedin" UriSource="/ArsenalManager.UI;component/Resources/Images/linkedin-logo.png"/>
+    
+    <BitmapImage x:Key="CloseWindow" UriSource="/ArsenalManager.UI;component/Resources/Images/close.png"/>
+    <BitmapImage x:Key="MinimizeWindow" UriSource="/ArsenalManager.UI;component/Resources/Images/minimize.png"/>
+    
+    <BitmapImage x:Key="File" UriSource="/ArsenalManager.UI;component/Resources/Images/file.png"/>
+    <BitmapImage x:Key="Directory" UriSource="/ArsenalManager.UI;component/Resources/Images/folder.png"/>
+</ResourceDictionary>
