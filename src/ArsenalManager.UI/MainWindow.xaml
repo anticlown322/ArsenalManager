@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModels="clr-namespace:ArsenalManager.UI.MVVM.ViewModels"
         mc:Ignorable="d"
         Height="720"
         Width="1200"
@@ -13,11 +12,6 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         Name="WndMain">
-    
-    <Window.DataContext>
-        <viewModels:MainViewModel />
-    </Window.DataContext>
-    
     <Window.InputBindings>
         <KeyBinding Command="{Binding CloseWindowCommand}" 
                     CommandParameter="{Binding ElementName=WndMain}" 

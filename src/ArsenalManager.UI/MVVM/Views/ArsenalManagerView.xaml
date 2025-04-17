@@ -9,15 +9,20 @@
              d:DesignHeight="650"
              d:DesignWidth="1130">
     <Grid>
-        <!--Grid setup-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        
+        <ComboBox ItemsSource="{Binding AvailableEntities}"
+                  SelectedItem="{Binding SelectedEntityType}"
+                  DisplayMemberPath="Name"/>
+        
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" 
+                      VerticalScrollBarVisibility="Auto">
+            <DataGrid ItemsSource="{Binding DataView}"
+                      AutoGenerateColumns="True"
+                      CanUserSortColumns="True"/>
+        </ScrollViewer>
     </Grid>
 </UserControl>

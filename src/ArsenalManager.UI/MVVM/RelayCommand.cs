@@ -4,28 +4,40 @@ namespace ArsenalManager.UI.MVVM;
 
 public class RelayCommand : ICommand
 {
-    private Action<object> _execute;
-    private Func<object, bool> _canExecute;
+    private readonly Action _execute;
+    private readonly Func<bool> _canExecute;
 
-    public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+    public event EventHandler? CanExecuteChanged;
+
+    public RelayCommand(Action execute, Func<bool>? canExecute = null)
     {
-        _execute = execute;
-        _canExecute = canExecute;
-    }
-    
-    public event EventHandler CanExecuteChanged
-    {
-        add => CommandManager.RequerySuggested += value;
-        remove => CommandManager.RequerySuggested -= value;
-    }
-    
-    public bool CanExecute(object? parameter)
-    {
-        return _canExecute == null || _canExecute(parameter);
+        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        _canExecute = canExecute ?? (() => true);
     }
 
-    public void Execute(object? parameter)
+    public bool CanExecute(object? parameter) => _canExecute();
+
+    public void Execute(object? parameter) => _execute();
+
+    public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+}
+
+public class RelayCommand<T> : ICommand
+{
+    private readonly Action<T> _execute;
+    private readonly Func<T, bool> _canExecute;
+
+    public event EventHandler? CanExecuteChanged;
+
+    public RelayCommand(Action<T> execute, Func<T, bool>? canExecute = null)
     {
-        _execute(parameter);
+        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        _canExecute = canExecute ?? (_ => true);
     }
+
+    public bool CanExecute(object? parameter) => _canExecute((T)parameter!);
+
+    public void Execute(object? parameter) => _execute((T)parameter!);
+
+    public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 }

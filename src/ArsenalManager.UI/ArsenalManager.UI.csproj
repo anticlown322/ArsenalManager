@@ -55,10 +55,18 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.14" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.14">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
       <PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Core\" />
+      <Folder Include="Core\Models\Entities\" />
+      <Folder Include="MVVM\Models\" />
     </ItemGroup>
 </Project>

@@ -4,56 +4,53 @@ namespace ArsenalManager.UI.MVVM.ViewModels;
 
 public class MainViewModel : ObservableObject
 {
-    private AboutViewModel AboutVm { get; set; }
-    private HelpViewModel HelpVm { get; set; }
-    private ArsenalManagerViewModel ArsenalManagerVm { get; set; }
-
-    public RelayCommand MinimizeWindowCommand { get; set; }
-    public RelayCommand CloseWindowCommand { get; set; }
-    
-    public RelayCommand AboutViewCommand { get; set; }
-    public RelayCommand HelpViewCommand { get; set; }
-    public RelayCommand ArsenalManagerViewCommand { get; set; }
+    private readonly AboutViewModel _aboutVm;
+    private readonly HelpViewModel _helpVm;
+    private readonly ArsenalManagerViewModel _arsenalManagerVm;
 
     private object _currentView;
     public object CurrentView
     {
         get => _currentView;
-        set
-        {
-            _currentView = value;
-            OnPropertyChanged();
-        }
+        set => SetField(ref _currentView, value);
+    }
+    
+    public RelayCommand<Window> MinimizeWindowCommand { get; }
+    public RelayCommand<Window> CloseWindowCommand { get; }
+    public RelayCommand<object> AboutViewCommand { get; }
+    public RelayCommand<object> HelpViewCommand { get; }
+    public RelayCommand<object> ArsenalManagerViewCommand { get; }
+
+    public MainViewModel(
+        AboutViewModel aboutVm,
+        HelpViewModel helpVm,
+        ArsenalManagerViewModel arsenalManagerVm)
+    {
+        _aboutVm = aboutVm;
+        _helpVm = helpVm;
+        _arsenalManagerVm = arsenalManagerVm;
+
+        CurrentView = _arsenalManagerVm;
+        
+        MinimizeWindowCommand = new RelayCommand<Window>(MinimizeWindow);
+        CloseWindowCommand = new RelayCommand<Window>(CloseWindow);
+        AboutViewCommand = new RelayCommand<object>(_ => CurrentView = _aboutVm);
+        HelpViewCommand = new RelayCommand<object>(_ => CurrentView = _helpVm);
+        ArsenalManagerViewCommand = new RelayCommand<object>(_ => CurrentView = _arsenalManagerVm);
     }
 
     public MainViewModel()
     {
-        AboutVm = new AboutViewModel();
-        HelpVm = new HelpViewModel();
-        ArsenalManagerVm = new ArsenalManagerViewModel();
-
-        CurrentView = ArsenalManagerVm; 
-        
-        MinimizeWindowCommand = new RelayCommand(MinimizeWindow);
-        CloseWindowCommand = new RelayCommand(CloseWindow);
-        AboutViewCommand = new RelayCommand(obj => CurrentView = AboutVm );
-        HelpViewCommand = new RelayCommand(obj => CurrentView = HelpVm );
-        ArsenalManagerViewCommand = new RelayCommand(obj => CurrentView = ArsenalManagerVm );
-    }
-    
-    void MinimizeWindow(object parameter)
-    {
-        if (parameter is Window window)
-        {
-            window.WindowState = WindowState.Minimized;
-        }
+        throw new NotImplementedException();
     }
 
-    void CloseWindow(object parameter)
+    private void MinimizeWindow(Window window)
     {
-        if (parameter is Window window)
-        {
-            window.Close();
-        }
+        window.WindowState = WindowState.Minimized;
+    }
+
+    private void CloseWindow(Window window)
+    {
+        window.Close();
     }
 }
