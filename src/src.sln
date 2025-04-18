@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArsenalManager.UI", "ArsenalManager.UI\ArsenalManager.UI.csproj", "{A4C9B325-330D-481A-9BD4-057ECC567D7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArsenalManager.PresentationWPF", "ArsenalManager.PresentationWPF\ArsenalManager.PresentationWPF.csproj", "{A4C9B325-330D-481A-9BD4-057ECC567D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArsenalManager.Domain", "ArsenalManager.Domain\ArsenalManager.Domain.csproj", "{9C69295F-DD3B-41A1-86F9-33612E7C8768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArsenalManager.Infrastructure", "ArsenalManager.Infrastructure\ArsenalManager.Infrastructure.csproj", "{68728F17-626D-42EE-8510-D95BEABF2A53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{A4C9B325-330D-481A-9BD4-057ECC567D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4C9B325-330D-481A-9BD4-057ECC567D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4C9B325-330D-481A-9BD4-057ECC567D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C69295F-DD3B-41A1-86F9-33612E7C8768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C69295F-DD3B-41A1-86F9-33612E7C8768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C69295F-DD3B-41A1-86F9-33612E7C8768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C69295F-DD3B-41A1-86F9-33612E7C8768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68728F17-626D-42EE-8510-D95BEABF2A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68728F17-626D-42EE-8510-D95BEABF2A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68728F17-626D-42EE-8510-D95BEABF2A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68728F17-626D-42EE-8510-D95BEABF2A53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
