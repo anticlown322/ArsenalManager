@@ -5,22 +5,22 @@ public class Weapon
     [DisplayName("ID")]
     public int WId { get; set; }
 
-    [DisplayName("Тип")]
+    [DisplayName("Type")]
     public string WType { get; set; } = null!;
 
-    [DisplayName("Модель")]
+    [DisplayName("Model")]
     public string? WModel { get; set; }
 
-    [DisplayName("Производитель")]
+    [DisplayName("Manufacture")]
     public string? WManufacture { get; set; }
 
-    [DisplayName("Калибр")]
+    [DisplayName("Caliber")]
     public string? WCaliber { get; set; }
 
-    [DisplayName("Статус")]
+    [DisplayName("Status")]
     public string WStatus { get; set; } = null!;
 
-    [DisplayName("ID склада")]
+    [DisplayName("Storage ID")]
     public int WStId { get; set; }
 
     public virtual Storage WSt { get; set; } = null!;

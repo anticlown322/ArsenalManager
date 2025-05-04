@@ -5,13 +5,13 @@ public class WriteOff
     [DisplayName("ID")]
     public int WoId { get; set; }
 
-    [DisplayName("Причина списания")]
+    [DisplayName("Reason")]
     public string? WoReason { get; set; }
 
-    [DisplayName("Дата списания")]
+    [DisplayName("Write-off date")]
     public DateOnly? WoDate { get; set; }
 
-    [DisplayName("ID ресурса")]
+    [DisplayName("Resource ID")]
     public int WoResId { get; set; }
 
     public virtual Resource WoRes { get; set; } = null!;

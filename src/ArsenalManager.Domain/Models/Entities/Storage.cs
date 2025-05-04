@@ -5,13 +5,13 @@ public class Storage
     [DisplayName("ID")]
     public int StId { get; set; }
 
-    [DisplayName("Название/Имя")]
+    [DisplayName("Name")]
     public string StName { get; set; } = null!;
 
-    [DisplayName("Местоположение")]
+    [DisplayName("Location")]
     public string StLocation { get; set; } = null!;
 
-    [DisplayName("Незанятая вместимость (в усл. ед.)")]
+    [DisplayName("Capacity")]
     public int StCapacity { get; set; }
 
     public virtual ICollection<Ammunition> Ammunitions { get; set; } = new List<Ammunition>();

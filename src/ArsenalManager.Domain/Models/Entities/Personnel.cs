@@ -5,19 +5,19 @@ public class Personnel
     [DisplayName("ID")]   
     public int PId { get; set; }
 
-    [DisplayName("Ф.И.О.")]
+    [DisplayName("Full name")]
     public string PFullname { get; set; } = null!;
 
-    [DisplayName("Должность")]
+    [DisplayName("Rank")]
     public string? PRank { get; set; }
 
-    [DisplayName("Принадлежность")]
+    [DisplayName("Unit")]
     public string? PUnit { get; set; }
 
-    [DisplayName("Контактные данные")]
+    [DisplayName("Contacts")]
     public string PContacts { get; set; } = null!;
 
-    [DisplayName("Уровень доступа")]
+    [DisplayName("Access level")]
     public string PAccLevel { get; set; } = null!;
 
     public virtual ICollection<Maintenance> pmMns { get; set; } = new List<Maintenance>();

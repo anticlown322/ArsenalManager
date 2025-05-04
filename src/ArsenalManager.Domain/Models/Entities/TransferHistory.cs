@@ -5,18 +5,18 @@ public class TransferHistory
     [DisplayName("ID")]
     public int TransferId { get; set; }
 
-    [DisplayName("Дата перемещения")]
+    [DisplayName("Date")]
     public DateOnly TrDate { get; set; }
 
-    [DisplayName("Имя ресурса")]
+    [DisplayName("Resource name")]
     public string ResourceName { get; set; } = null!;
 
-    [DisplayName("Откуда")]
+    [DisplayName("From")]
     public string FromStorage { get; set; } = null!;
 
-    [DisplayName("Куда")]
+    [DisplayName("To")]
     public string ToStorage { get; set; } = null!;
 
-    [DisplayName("Ответственный")]
+    [DisplayName("Responsible")]
     public string ResponsiblePerson { get; set; } = null!;
 }

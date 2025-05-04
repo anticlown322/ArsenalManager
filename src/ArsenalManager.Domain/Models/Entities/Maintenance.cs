@@ -5,16 +5,16 @@ public class Maintenance
     [DisplayName("ID")]
     public int MnId { get; set; }
 
-    [DisplayName("Дата")]
+    [DisplayName("Date")]
     public DateOnly? MnDate { get; set; }
 
-    [DisplayName("Тип")]
+    [DisplayName("Type")]
     public string MnType { get; set; } = null!;
 
-    [DisplayName("Описание")]
+    [DisplayName("Description")]
     public string? MnDesc { get; set; }
 
-    [DisplayName("ID ресурса")]
+    [DisplayName("Resource ID")]
     public int MnResId { get; set; }
 
     public virtual Resource MnRes { get; set; } = null!;

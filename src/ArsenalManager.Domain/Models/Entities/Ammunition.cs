@@ -5,22 +5,22 @@ public class Ammunition
     [DisplayName("ID")]
     public int AmId { get; set; }
 
-    [DisplayName("Тип боеприпаса")]
+    [DisplayName("Type")]
     public string AmType { get; set; } = null!;
 
-    [DisplayName("Калибр")]
+    [DisplayName("Caliber")]
     public string? AmCaliber { get; set; }
 
-    [DisplayName("Количество")]
+    [DisplayName("Quantity")]
     public uint AmQuantity { get; set; }
 
-    [DisplayName("Год производства")]
+    [DisplayName("Year")]
     public short AmManufDate { get; set; }
 
-    [DisplayName("Срок годности")]
+    [DisplayName("Expire Date")]
     public DateOnly AmExprDate { get; set; }
 
-    [DisplayName("ID склада")]
+    [DisplayName("Storage ID")]
     public int AmStId { get; set; }
 
     public virtual Storage AmSt { get; set; } = null!;

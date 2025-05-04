@@ -5,10 +5,10 @@ public class Resource
     [DisplayName("ID")]
     public int ResId { get; set; }
 
-    [DisplayName("Название")]
+    [DisplayName("Title")]
     public string ResName { get; set; } = null!;
 
-    [DisplayName("Количество")]
+    [DisplayName("Quantity")]
     public long? ResQuantity { get; set; }
 
     public virtual ICollection<Maintenance> Maintenances { get; set; } = new List<Maintenance>();

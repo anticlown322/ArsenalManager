@@ -5,22 +5,22 @@ public class Vehicle
     [DisplayName("ID")]
     public int VId { get; set; }
 
-    [DisplayName("Тип")]
+    [DisplayName("Type")]
     public string VType { get; set; } = null!;
 
-    [DisplayName("Модель")]
+    [DisplayName("Model")]
     public string? VModel { get; set; }
 
-    [DisplayName("Производитель")]
+    [DisplayName("Manufacture")]
     public string? VManufacture { get; set; }
 
-    [DisplayName("Год производства")]
+    [DisplayName("Year")]
     public short? VManufYear { get; set; }
 
-    [DisplayName("Статус")]
+    [DisplayName("Status")]
     public string VStatus { get; set; } = null!;
 
-    [DisplayName("ID склада")]
+    [DisplayName("Storage ID")]
     public int VStId { get; set; }
 
     public virtual Storage VSt { get; set; } = null!;

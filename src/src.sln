@@ -6,6 +6,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArsenalManager.Domain", "Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArsenalManager.Infrastructure", "ArsenalManager.Infrastructure\ArsenalManager.Infrastructure.csproj", "{68728F17-626D-42EE-8510-D95BEABF2A53}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{D6654D6A-DD86-4EE5-AB3A-8361385E18C6}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+		inits\01-init.sql = inits\01-init.sql
+		inits\02-tables.sql = inits\02-tables.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

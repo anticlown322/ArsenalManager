@@ -48,7 +48,7 @@ public partial class App : Application
     {
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(
-                "server=localhost;port=3306;database=arsenal;user=root;password=1234",
+                "server=localhost;port=3306;database=arsenal;user=user;password=password",
                 ServerVersion.Parse("8.0.40-mysql")
             ));
     }

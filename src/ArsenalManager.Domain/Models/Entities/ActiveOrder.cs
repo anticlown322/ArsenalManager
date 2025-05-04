@@ -5,12 +5,12 @@ public class ActiveOrder
     [DisplayName("ID")]
     public int OrderId { get; set; }
 
-    [DisplayName("Дата заказа")]
+    [DisplayName("Date")]
     public DateOnly? ODate { get; set; }
 
-    [DisplayName("Поставщик")]
+    [DisplayName("Supplier")]
     public string SupplierName { get; set; } = null!;
 
-    [DisplayName("Статус")]
+    [DisplayName("Status")]
     public string? OStatus { get; set; }
 }

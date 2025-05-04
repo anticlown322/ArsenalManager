@@ -2,15 +2,15 @@
 
 public class WeaponAmmunitionCompatibility
 {
-    [DisplayName("ID модели оружия")]
+    [DisplayName("Weapon ID")]
     public int WeaponId { get; set; }
 
-    [DisplayName("Модель оружия")]
+    [DisplayName("Weapon Model")]
     public string? WeaponName { get; set; }
 
-    [DisplayName("ID типа боеприпаса")]
+    [DisplayName("Ammunition ID")]
     public int AmmunitionId { get; set; }
 
-    [DisplayName("Тип боеприпаса")]
+    [DisplayName("Ammunition type")]
     public string AmmunitionType { get; set; } = null!;
 }

@@ -5,25 +5,25 @@ public class CommDevice
     [DisplayName("ID")]
     public int CdId { get; set; }
 
-    [DisplayName("Тип устройства")]
+    [DisplayName("Type")]
     public string CdType { get; set; } = null!;
 
-    [DisplayName("Модель")]
+    [DisplayName("Model")]
     public string? CdModel { get; set; }
 
-    [DisplayName("Производитель")]
+    [DisplayName("Manufacture")]
     public string? CdManufacture { get; set; }
 
-    [DisplayName("Мин. частота (МГц)")]
+    [DisplayName("Min Frequency (MGhz)")]
     public float? CdFreqMin { get; set; }
 
-    [DisplayName("Макс. частота (МГц)")]
+    [DisplayName("Max Frequency (MGhz)")]
     public float? CdFreqMax { get; set; }
 
-    [DisplayName("Статус")]
+    [DisplayName("Status")]
     public string CdStatus { get; set; } = null!;
 
-    [DisplayName("ID склада")]
+    [DisplayName("Storage ID")]
     public int CdStId { get; set; }
 
     public virtual Storage CdSt { get; set; } = null!;

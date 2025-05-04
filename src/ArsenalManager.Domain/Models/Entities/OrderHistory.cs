@@ -5,18 +5,18 @@ public class OrderHistory
     [DisplayName("ID")]
     public int OrderId { get; set; }
 
-    [DisplayName("Дата заказа")]
+    [DisplayName("Order date")]
     public DateOnly? ODate { get; set; }
 
-    [DisplayName("Ресурс")]
+    [DisplayName("Resource")]
     public string ResourceName { get; set; } = null!;
 
-    [DisplayName("Поставщик")]
+    [DisplayName("Supplier")]
     public string SupplierName { get; set; } = null!;
 
-    [DisplayName("Ответственный")]
+    [DisplayName("Responsible")]
     public string ResponsiblePerson { get; set; } = null!;
 
-    [DisplayName("Статус")]
+    [DisplayName("Status")]
     public string? OStatus { get; set; }
 }

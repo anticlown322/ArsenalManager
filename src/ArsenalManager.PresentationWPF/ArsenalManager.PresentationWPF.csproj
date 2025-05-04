@@ -58,11 +58,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Core\" />
-      <Folder Include="MVVM\Models\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ArsenalManager.Infrastructure\ArsenalManager.Infrastructure.csproj" />
     </ItemGroup>
 </Project>

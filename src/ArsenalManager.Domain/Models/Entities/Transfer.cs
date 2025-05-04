@@ -5,16 +5,16 @@ public class Transfer
     [DisplayName("ID")]
     public int TrId { get; set; }
 
-    [DisplayName("Дата перемещения")]
+    [DisplayName("Date")]
     public DateOnly TrDate { get; set; }
 
-    [DisplayName("Откуда (ID склада)")]
+    [DisplayName("From (Storage ID)")]
     public int TrStartStorageId { get; set; }
 
-    [DisplayName("Куда (ID склада)")]
+    [DisplayName("To (Storage ID)")]
     public int TrEndStorageId { get; set; }
 
-    [DisplayName("ID ресурса")]
+    [DisplayName("Resource ID")]
     public int TrResId { get; set; }
 
     public virtual Storage TrEndStorage { get; set; } = null!;

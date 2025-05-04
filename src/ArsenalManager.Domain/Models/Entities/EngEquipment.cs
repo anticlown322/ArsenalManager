@@ -5,22 +5,22 @@ public class EngEquipment
     [DisplayName("ID")]
     public int EeId { get; set; }
 
-    [DisplayName("Тип оборудования")]
+    [DisplayName("Type")]
     public string EeType { get; set; } = null!;
 
-    [DisplayName("Модель")]
+    [DisplayName("Model")]
     public string? EeModel { get; set; }
 
-    [DisplayName("Производитель")]
+    [DisplayName("Manufacture")]
     public string? EeManufacture { get; set; }
 
-    [DisplayName("Год производства")]
+    [DisplayName("Year")]
     public short? EeManufYear { get; set; }
 
-    [DisplayName("Статус")]
+    [DisplayName("Status")]
     public string EeStatus { get; set; } = null!;
 
-    [DisplayName("ID склада")]
+    [DisplayName("Storage ID")]
     public int EeStId { get; set; }
 
     public virtual Storage EeSt { get; set; } = null!;

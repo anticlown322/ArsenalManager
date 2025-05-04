@@ -5,13 +5,13 @@ public class Supplier
     [DisplayName("ID")]
     public int SpId { get; set; }
 
-    [DisplayName("Название/Имя")]
+    [DisplayName("Name")]
     public string SpName { get; set; } = null!;
 
-    [DisplayName("Контактные данные")]
+    [DisplayName("Contacts")]
     public string? SpContacts { get; set; }
 
-    [DisplayName("Рейтинг")]
+    [DisplayName("Rating")]
     public decimal? SpRating { get; set; }
 
     public virtual ICollection<Order> OsOs { get; set; } = new List<Order>();

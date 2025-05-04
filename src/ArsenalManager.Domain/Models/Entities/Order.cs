@@ -5,16 +5,16 @@ public class Order
     [DisplayName("ID")]
     public int OId { get; set; }
 
-    [DisplayName("Количество ресурса")]
+    [DisplayName("Quantity")]
     public int? OQuantity { get; set; }
 
-    [DisplayName("Дата заказа")]
+    [DisplayName("Order date")]
     public DateOnly? ODate { get; set; }
 
-    [DisplayName("Статус")]
+    [DisplayName("Status")]
     public string? OStatus { get; set; }
 
-    [DisplayName("ID ресурса")]
+    [DisplayName("Resource ID")]
     public int OResId { get; set; }
 
     public virtual Resource ORes { get; set; } = null!;
