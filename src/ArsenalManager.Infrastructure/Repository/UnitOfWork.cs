@@ -1,5 +1,4 @@
 ﻿using ArsenalManager.Domain.Contracts.Repositories;
-using ArsenalManager.PresentationWPF.Core.Contracts.Repositories;
 
 namespace ArsenalManager.Infrastructure.Repository;
 
@@ -20,7 +19,8 @@ public class UnitOfWork(
     IRepository<Transfer> transfers,
     IRepository<TransferHistory> transferHistories,
     IRepository<WeaponAmmunitionCompatibility> weaponAmmunitionCompatibility,
-    IRepository<WriteOff> writeOffs)
+    IRepository<WriteOff> writeOffs,
+    ApplicationDbContext context)
     : IUnitOfWork
 {
     public IRepository<ActiveOrder> ActiveOrders { get; } = activeOrders;
@@ -47,5 +47,10 @@ public class UnitOfWork(
             .GetProperties()
             .FirstOrDefault(p => p.PropertyType == typeof(IRepository<T>))
             ?.GetValue(this) as IRepository<T>;
+    }
+    
+    public async Task<int> SaveAsync()
+    {
+        return await context.SaveChangesAsync();
     }
 }

@@ -1,4 +1,4 @@
-﻿using ArsenalManager.PresentationWPF.Core.Contracts.Repositories;
+﻿using ArsenalManager.Domain.Contracts.Repositories;
 
 namespace ArsenalManager.Infrastructure.Repository;
 

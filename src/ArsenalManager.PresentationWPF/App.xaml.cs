@@ -3,8 +3,8 @@ using ArsenalManager.Domain.Contracts.Repositories;
 using ArsenalManager.Domain.Models.Entities;
 using ArsenalManager.Infrastructure.Repository;
 using ArsenalManager.Infrastructure.Repository.Implementations;
-using ArsenalManager.PresentationWPF.Core.Contracts.Repositories;
 using ArsenalManager.PresentationWPF.MVVM.ViewModels;
+using ArsenalManager.PresentationWPF.MVVM.ViewModels.Dialogs;
 using ArsenalManager.PresentationWPF.MVVM.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +24,7 @@ public partial class App : Application
                 ConfigureDbContext(services);
                 AddRepositories(services);
                 services.AddScoped<IUnitOfWork, UnitOfWork>();
+                services.AddSingleton<IDialogService, DialogService>();
                 AddViews(services);
                 AddViewModels(services);
             })

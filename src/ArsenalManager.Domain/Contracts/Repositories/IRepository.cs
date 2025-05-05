@@ -1,4 +1,4 @@
-﻿namespace ArsenalManager.PresentationWPF.Core.Contracts.Repositories;
+﻿namespace ArsenalManager.Domain.Contracts.Repositories;
 
 public interface IRepository<T> where T : class
 {

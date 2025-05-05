@@ -1,5 +1,4 @@
 ﻿using ArsenalManager.Domain.Models.Entities;
-using ArsenalManager.PresentationWPF.Core.Contracts.Repositories;
 
 namespace ArsenalManager.Domain.Contracts.Repositories;
 
@@ -23,5 +22,6 @@ public interface IUnitOfWork
     IRepository<WeaponAmmunitionCompatibility> WeaponAmmunitionCompatibility { get; }
     IRepository<WriteOff> WriteOffs { get; }
 
+    Task<int> SaveAsync();
     public IRepository<T> GetRepository<T>() where T : class;
 }
