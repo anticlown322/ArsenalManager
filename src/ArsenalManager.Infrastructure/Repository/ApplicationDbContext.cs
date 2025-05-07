@@ -70,4 +70,18 @@ public class ApplicationDbContext(
                 i > 0 && char.IsUpper(c) ? "_" + c.ToString() : c.ToString()))
             .ToLower();
     }
+    
+    public virtual async Task AutoReplenishResourcesAsync(int threshold)
+    {
+        await Database.ExecuteSqlRawAsync(
+            "CALL auto_replenish_resources({0})", 
+            threshold);
+    }
+
+    public virtual async Task CreateOrderAsync(int resourceId, int quantity, int supplierId, int personnelId)
+    {
+        await Database.ExecuteSqlRawAsync(
+            "CALL create_order({0}, {1}, {2}, {3})", 
+            resourceId, quantity, supplierId, personnelId);
+    }
 }

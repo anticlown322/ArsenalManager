@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Input;
+using ArsenalManager.Application.Contracts.Services;
 using ArsenalManager.Domain.Contracts.Repositories;
 using ArsenalManager.Domain.Utility;
 using ArsenalManager.Infrastructure.Repository;
@@ -21,6 +22,7 @@ public class ArsenalManagerViewModel : ObservableObject
     private DataView _dataView;
     private DataRowView _selectedItem;
     private string _statusMessage;
+    private readonly IProcedureService _procedureService;
 
     public ObservableCollection<object> Items
     {
@@ -69,23 +71,27 @@ public class ArsenalManagerViewModel : ObservableObject
     public ICommand AddNewCommand { get; }
     public ICommand EditCommand { get; }
     public ICommand DeleteCommand { get; }
-    public ICommand ExecuteCustomProcedureCommand { get; }
+    public ICommand ReplenishResourcesCommand { get; }
+    public ICommand CreateOrderCommand { get; }
     public ICommand RefreshCommand { get; }
 
     public ArsenalManagerViewModel(
         IUnitOfWork unitOfWork,
         ApplicationDbContext dbContext,
-        IDialogService dialogService)
+        IDialogService dialogService,
+        IProcedureService procedureService)
     {
         _unitOfWork = unitOfWork;
         _dbContext = dbContext;
         _dialogService = dialogService;
+        _procedureService = procedureService;
 
         RefreshCommand = CommandExtensions.CreateCommand(async () => await LoadDataAsync());
         AddNewCommand = CommandExtensions.CreateCommand(AddNewItem);
         EditCommand = CommandExtensions.CreateCommand(EditItem, () => SelectedItem != null);
         DeleteCommand = CommandExtensions.CreateCommand(DeleteItem, () => SelectedItem != null);
-        ExecuteCustomProcedureCommand = CommandExtensions.CreateCommand(ExecuteCustomProcedure);
+        ReplenishResourcesCommand = CommandExtensions.CreateCommand(ReplenishResources, () => true);
+        CreateOrderCommand = CommandExtensions.CreateCommand(CreateOrder, () => true);
 
         if (AvailableEntities.Count > 0)
         {
@@ -241,7 +247,7 @@ public class ArsenalManagerViewModel : ObservableObject
 
         try
         {
-            var itemId = SelectedItem.Row[0]; // Предполагаем, что ID в первом столбце
+            var itemId = SelectedItem.Row[0];
             var method = typeof(ArsenalManagerViewModel)
                 .GetMethod(nameof(PerformEditAsync), BindingFlags.NonPublic | BindingFlags.Instance)
                 .MakeGenericMethod(_selectedEntityType);
@@ -318,11 +324,50 @@ public class ArsenalManagerViewModel : ObservableObject
         });
     }
 
-    private void ExecuteCustomProcedure()
+    private async void ReplenishResources()
     {
-        StatusMessage = "Custom procedure executed";
+        try
+        {
+            var threshold = _dialogService.ShowInputDialog(
+                "Replenish Resources", 
+                "Enter threshold value:");
+        
+            if (threshold.HasValue)
+            {
+                await _procedureService.AutoReplenishResourcesAsync(threshold.Value);
+                StatusMessage = $"Resources replenished successfully (threshold: {threshold})";
+                await LoadDataAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Error replenishing resources: {ex.Message}";
+        }
     }
 
+    private async void CreateOrder()
+    {
+        try
+        {
+            var parameters = _dialogService.ShowOrderParametersDialog();
+            if (parameters != null)
+            {
+                await _procedureService.CreateOrderAsync(
+                    parameters.ResourceId,
+                    parameters.Quantity,
+                    parameters.SupplierId,
+                    parameters.PersonnelId);
+            
+                StatusMessage = $"Order created successfully for resource {parameters.ResourceId}";
+                await LoadDataAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Error creating order: {ex.Message}";
+        }
+    }
+    
     private bool IsView(Type entityType)
     {
         var entity = _dbContext.Model.FindEntityType(entityType);

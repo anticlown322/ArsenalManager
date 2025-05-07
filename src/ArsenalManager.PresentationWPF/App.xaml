@@ -9,9 +9,26 @@
             <!--Style Resources-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/UIColors.xaml"/>
+                
                 <ResourceDictionary Source="Style/CustomComponents/LeftMenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Style/CustomComponents/TopMenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Style/CustomComponents/InViewButton.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/InViewGroupBox.xaml"/>
+                
+                <ResourceDictionary Source="Style/CustomComponents/ComboBox/ComboBoxToggleButtonTemplate.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/ComboBox/CustomComboBoxItemStyle.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/ComboBox/InViewComboBox.xaml"/>
+                
+                <ResourceDictionary Source="Style/CustomComponents/StatusBar/InViewStatusBarTextBlock.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/StatusBar/InViewStatusBarItem.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/StatusBar/InViewStatusBarSeparator.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/StatusBar/InViewStatusBar.xaml"/>
+                
+                <ResourceDictionary Source="Style/CustomComponents/Grid/MyDataGrid.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/Grid/MyDataGridCell.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/Grid/MyDataGridRow.xaml"/>
+                <ResourceDictionary Source="Style/CustomComponents/Grid/MyDataGridColumnHeader.xaml"/>
+                
                 <ResourceDictionary Source="Resources/StatResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 

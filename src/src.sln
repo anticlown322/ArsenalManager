@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{D6654D6A
 		inits\02-tables.sql = inits\02-tables.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArsenalManager.Application", "ArsenalManager.Application\ArsenalManager.Application.csproj", "{60323F21-46CA-40F2-944A-FDBA2BBABFA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{68728F17-626D-42EE-8510-D95BEABF2A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68728F17-626D-42EE-8510-D95BEABF2A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68728F17-626D-42EE-8510-D95BEABF2A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60323F21-46CA-40F2-944A-FDBA2BBABFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60323F21-46CA-40F2-944A-FDBA2BBABFA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60323F21-46CA-40F2-944A-FDBA2BBABFA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60323F21-46CA-40F2-944A-FDBA2BBABFA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

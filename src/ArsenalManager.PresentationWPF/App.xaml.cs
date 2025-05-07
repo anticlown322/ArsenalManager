@@ -1,8 +1,10 @@
 ﻿using System.Windows;
+using ArsenalManager.Application.Contracts.Services;
 using ArsenalManager.Domain.Contracts.Repositories;
 using ArsenalManager.Domain.Models.Entities;
 using ArsenalManager.Infrastructure.Repository;
 using ArsenalManager.Infrastructure.Repository.Implementations;
+using ArsenalManager.Infrastructure.Services;
 using ArsenalManager.PresentationWPF.MVVM.ViewModels;
 using ArsenalManager.PresentationWPF.MVVM.ViewModels.Dialogs;
 using ArsenalManager.PresentationWPF.MVVM.Views;
@@ -12,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace ArsenalManager.PresentationWPF;
 
-public partial class App : Application
+public partial class App
 {
     private IHost _host;
     
@@ -25,6 +27,7 @@ public partial class App : Application
                 AddRepositories(services);
                 services.AddScoped<IUnitOfWork, UnitOfWork>();
                 services.AddSingleton<IDialogService, DialogService>();
+                services.AddScoped<IProcedureService, ProcedureService>();
                 AddViews(services);
                 AddViewModels(services);
             })
