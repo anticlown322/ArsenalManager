@@ -143,57 +143,101 @@ public class DialogService : IDialogService
         {
             Title = title,
             Width = 300,
-            Height = 150,
+            MinWidth = 300,
+            MaxWidth = 500,
+            SizeToContent = SizeToContent.Height,
             WindowStartupLocation = WindowStartupLocation.CenterScreen,
-            SizeToContent = SizeToContent.Height
+            WindowStyle = WindowStyle.ToolWindow,
+            ResizeMode = ResizeMode.NoResize
         };
 
+        // Основной контейнер
         var grid = new Grid { Margin = new Thickness(10) };
-        grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-        var label = new Label
+        // Текст подсказки
+        var promptTextBlock = new TextBlock
         {
-            Content = prompt,
-            Margin = new Thickness(0, 0, 0, 5)
-        };
-        Grid.SetRow(label, 0);
-        Grid.SetColumnSpan(label, 2);
-
-        var textBox = new TextBox
-        {
+            Text = prompt,
+            TextWrapping = TextWrapping.Wrap,
             Margin = new Thickness(0, 0, 0, 10)
         };
-        Grid.SetRow(textBox, 1);
-        Grid.SetColumnSpan(textBox, 2);
+        Grid.SetRow(promptTextBlock, 0);
+        Grid.SetColumnSpan(promptTextBlock, 2);
+        grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
+        // Поле ввода с валидацией
+        var inputTextBox = new TextBox
+        {
+            Margin = new Thickness(0, 0, 0, 15),
+            VerticalContentAlignment = VerticalAlignment.Center
+        };
+        Grid.SetRow(inputTextBox, 1);
+        Grid.SetColumnSpan(inputTextBox, 2);
+        grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+        // Валидация числового ввода
+        var validationRule = new NumericValidationRule();
+        var binding = new Binding("Text")
+        {
+            Source = inputTextBox,
+            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+            ValidationRules = { validationRule }
+        };
+        inputTextBox.SetBinding(TextBox.TextProperty, binding);
+
+        // Панель кнопок
         var buttonPanel = new StackPanel
         {
             Orientation = Orientation.Horizontal,
             HorizontalAlignment = HorizontalAlignment.Right,
+            Margin = new Thickness(0, 5, 0, 0)
+        };
+        Grid.SetRow(buttonPanel, 2);
+        Grid.SetColumnSpan(buttonPanel, 2);
+        grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+        var okButton = new Button
+        {
+            Content = "OK",
+            IsDefault = true,
+            Width = 80,
+            Margin = new Thickness(5, 0, 5, 0),
+            IsEnabled = false
         };
 
-        var okButton = new Button { Content = "OK", IsDefault = true, Width = 80, Margin = new Thickness(5) };
-        var cancelButton = new Button { Content = "Cancel", IsCancel = true, Width = 80, Margin = new Thickness(5) };
+        var cancelButton = new Button
+        {
+            Content = "Cancel",
+            IsCancel = true,
+            Width = 80,
+            Margin = new Thickness(5, 0, 5, 0)
+        };
+
+        inputTextBox.TextChanged += (s, e) => { okButton.IsEnabled = int.TryParse(inputTextBox.Text, out _); };
 
         int? result = null;
-
         okButton.Click += (s, e) =>
         {
-            if (int.TryParse(textBox.Text, out int value))
+            if (int.TryParse(inputTextBox.Text, out int value))
+            {
                 result = value;
-            window.DialogResult = result != null;
+                window.DialogResult = true;
+            }
         };
 
         buttonPanel.Children.Add(okButton);
         buttonPanel.Children.Add(cancelButton);
 
-        grid.Children.Add(label);
-        grid.Children.Add(textBox);
+        grid.Children.Add(promptTextBlock);
+        grid.Children.Add(inputTextBox);
         grid.Children.Add(buttonPanel);
 
         window.Content = grid;
+
+        inputTextBox.Focus();
+
         return window.ShowDialog() == true ? result : null;
     }
 
@@ -290,7 +334,7 @@ public class DialogService : IDialogService
         grid.Children.Add(label);
         grid.Children.Add(textBox);
     }
-    
+
     public class NumericValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
@@ -298,8 +342,8 @@ public class DialogService : IDialogService
             if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
                 return new ValidationResult(true, null);
 
-            return int.TryParse(value.ToString(), out _) 
-                ? new ValidationResult(true, null) 
+            return int.TryParse(value.ToString(), out _)
+                ? new ValidationResult(true, null)
                 : new ValidationResult(false, "Please enter a valid integer");
         }
     }
@@ -311,8 +355,8 @@ public class DialogService : IDialogService
             if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
                 return new ValidationResult(true, null);
 
-            return float.TryParse(value.ToString(), out _) 
-                ? new ValidationResult(true, null) 
+            return float.TryParse(value.ToString(), out _)
+                ? new ValidationResult(true, null)
                 : new ValidationResult(false, "Please enter a valid number");
         }
     }
